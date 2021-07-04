@@ -10,8 +10,6 @@ let cache = new LRU({
 
 module.exports = async function buzzer(commandInteraction) {
 
-  console.log(new MessageButton());
-
   await commandInteraction.reply({ 
     content: 'Nobody has buzzed in yet.',
     components: [

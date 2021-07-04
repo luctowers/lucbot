@@ -12,7 +12,7 @@
   "author": "Lucas Towers",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "github:discordjs/discord.js#a7c6678c7246025c4b358a5396dbacf4a73148ee",
+    "discord.js": "github:discordjs/discord.js#fe5d56c9b11b3e5f05933c6d746237b9f353b392",
     "lru-cache": "^6.0.0"
   }
 }

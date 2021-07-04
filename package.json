@@ -1,7 +1,7 @@
 {
   "name": "lucbot",
   "version": "1.0.0",
-  "description": "A bot for the Scrub Club",
+  "description": "A discord bot for the Scrub Club",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

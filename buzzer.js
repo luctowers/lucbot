@@ -18,7 +18,7 @@ module.exports = async function buzzer(commandInteraction) {
       new MessageActionRow()
       .addComponents(
         new MessageButton()
-          .setCustomId('buzzer-' + commandInteraction.id + '-buzzer')
+          .setcustomId('buzzer-' + commandInteraction.id + '-buzzer')
           .setLabel('buzzer')
           .setStyle('PRIMARY'),
       )
@@ -28,15 +28,15 @@ module.exports = async function buzzer(commandInteraction) {
 };
 
 client.on('interactionCreate', async interaction => {
-	if (interaction.isButton() && interaction.customID.startsWith('buzzer-')) {
-    if (interaction.customID.endsWith('-buzzer')) {
+	if (interaction.isButton() && interaction.customId.startsWith('buzzer-')) {
+    if (interaction.customId.endsWith('-buzzer')) {
       await buzzerPressed(interaction);
     }
 	}
 });
 
 async function buzzerPressed(buttonInteraction) {
-  let id = buttonInteraction.customID.split('-')[1];
+  let id = buttonInteraction.customId.split('-')[1];
   let entry = cache.get(id);
   if (entry === undefined) {
     entry = constructEntry(buttonInteraction.message);

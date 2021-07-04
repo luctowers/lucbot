@@ -16,7 +16,7 @@ module.exports = async function buzzer(commandInteraction) {
       new MessageActionRow()
       .addComponents(
         new MessageButton()
-          .setcustomId('buzzer-' + commandInteraction.id + '-buzzer')
+          .setCustomId('buzzer-' + commandInteraction.id + '-buzzer')
           .setLabel('buzzer')
           .setStyle('PRIMARY'),
       )

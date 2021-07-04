@@ -1,15 +1,16 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
+const client = require('./client');
 
-client.on('ready', () => {
-	console.log(`Logged in as ${client.user.tag}!`);
-});
+const commands = {
+	buzzer: require('./buzzer')
+}
 
-client.on('interaction', async interaction => {
-	if (!interaction.isCommand()) return;
-	if (interaction.commandName === 'ping') {
-		await interaction.reply('pong');
+client.on('interactionCreate', async interaction => {
+	if (interaction.isCommand()) {
+		let command = commands[interaction.commandName];
+		if (command) {
+			command(interaction);
+		} else {
+			interaction.reply({ content: 'unknown command', ephemeral: true });
+		}
 	}
 });
-
-client.login(process.env.DISCORD_TOKEN);

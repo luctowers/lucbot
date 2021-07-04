@@ -12,6 +12,7 @@
   "author": "Lucas Towers",
   "license": "MIT",
   "dependencies": {
-    "discord.js": "^12.5.3"
+    "discord.js": "github:discordjs/discord.js",
+    "lru-cache": "^6.0.0"
   }
 }

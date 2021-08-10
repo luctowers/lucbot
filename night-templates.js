@@ -1,0 +1,20 @@
+module.exports = [
+    "おやすみ @！",
+    "Buenas noches @!",
+    "Bonsoir @!",
+    "Доброй ночи @!",
+    "Buona Notte @!",
+    "Góða nótt @!",
+    "God natt @!",
+    "晚安 @！",
+    "تصبح على خير @!",
+    "잘 자 @!",
+    "Good night @!",
+    "Καληνυχτα @!",
+    "İyi geceler @!",
+    "Sugeng dalu @!",
+    "Welterusten @!",
+    "Nos da @!",
+    "Қайырлы түн @!",
+    "शुभ रात्रि @!"
+  ];

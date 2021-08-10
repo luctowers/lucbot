@@ -15,7 +15,7 @@ client.on('messageCreate', message => {
   greeting(
     message,
     new Set([20,21,22,23,0,1]),
-    /(^|[^a-z]|g|good)?)night($|[^a-z])/i,
+    /(^|[^a-z]|g|good)night($|[^a-z])/i,
     require('./night-templates.js')
   );
 });

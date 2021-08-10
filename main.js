@@ -9,13 +9,13 @@ client.on('messageCreate', message => {
   greeting(
     message,
     new Set([5,6,7,8,9,10]),
-    /(^|\s|good)morn(in)?g?($|[^a-z])/i,
+    /(^|[^a-z]|g|good)morn(in)?g?($|[^a-z])/i,
     require('./morning-templates.js')
   );
   greeting(
     message,
     new Set([20,21,22,23,0,1]),
-    /(^|\s|g(ood|')?)night($|[^a-z])/i,
+    /(^|[^a-z]|g|good)?)night($|[^a-z])/i,
     require('./night-templates.js')
   );
 });

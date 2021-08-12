@@ -4,20 +4,30 @@ const client = require('./client.js');
 
 const cache = new LRU(10000);
 const cooldown = 4 * 60 * 60;
+const enemies = new Set(["210201057651982339","630229422330609664"]);
 
 client.on('messageCreate', message => {
-  greeting(
-    message,
-    new Set([5,6,7,8,9,10]),
-    /(^|[^a-z]|g|good)morn(in)?g?($|[^a-z])/i,
-    require('./morning-templates.js')
-  );
-  greeting(
-    message,
-    new Set([20,21,22,23,0,1]),
-    /(^|[^a-z]|g|good)night($|[^a-z])/i,
-    require('./night-templates.js')
-  );
+  if (enemies.has(message.author.id)) {
+    greeting(
+      message,
+      new Set([20,21,22,23,0,1]),
+      /(^|[^a-z]|g|good)night($|[^a-z])/i,
+      require('./rude-night-templates.js')
+    );
+  } else {
+    greeting(
+      message,
+      new Set([5,6,7,8,9,10,21,22]),
+      /(^|[^a-z]|g|good)morn(in)?g?($|[^a-z])/i,
+      require('./morning-templates.js')
+    );
+    greeting(
+      message,
+      new Set([20,21,22,23,0,1]),
+      /(^|[^a-z]|g|good)night($|[^a-z])/i,
+      require('./night-templates.js')
+    );
+  }
 });
 
 function greeting(message, hourSet, pattern, templates) {

@@ -10,6 +10,12 @@ client.on('messageCreate', message => {
   if (enemies.has(message.author.id)) {
     greeting(
       message,
+      new Set([5,6,7,8,9,10,21,22]),
+      /(^|[^a-z]|g|good)morn(in)?g?($|[^a-z])/i,
+      require('./rude-morning-templates.js')
+    );
+    greeting(
+      message,
       new Set([20,21,22,23,0,1]),
       /(^|[^a-z]|g|good)night($|[^a-z])/i,
       require('./rude-night-templates.js')

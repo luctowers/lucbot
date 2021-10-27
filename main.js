@@ -2,7 +2,7 @@ const greeting = require('./greeting');
 const client = require('./client.js');
 const { DateTime } = require("luxon");
 
-const cumBan = new Set(["117653991051100162","295684308184727555"]);
+const cumBan = new Set(["295684308184727555"]);
 const enemies = new Set(["210201057651982339","630229422330609664"]);
 const cumTs = {};
 
@@ -25,7 +25,7 @@ client.on('messageCreate', message => {
       }
     }
   }
-
+117653991051100162
   if (enemies.has(message.author.id)) {
     greeting(
       message,

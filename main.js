@@ -1,12 +1,31 @@
-const { DateTime } = require("luxon");
-const LRU = require('lru-cache');
+const greeting = require('./greeting');
 const client = require('./client.js');
+const { DateTime } = require("luxon");
 
-const cache = new LRU(10000);
-const cooldown = 4 * 60 * 60;
+const cumBan = new Set(["117653991051100162","295684308184727555"]);
 const enemies = new Set(["210201057651982339","630229422330609664"]);
+const cumTs = {};
 
 client.on('messageCreate', message => {
+
+  if (cumBan.has(message.author.id)) {
+    if (message.content.toLowerCase().match(/.*c+[^a-z]*u+[^a-z]*m+.*/i)) {
+      let reply = true;
+      let now = DateTime.now().setZone('America/Vancouver');
+      if (cumTs[message.author.id]) {
+        reply = now.diff(cumTs[message.author.id], 'seconds').toObject().seconds > 30
+      }
+      cumTs[message.author.id] = now;
+      if (reply) {
+        message.reply(`${message.author} you have your exceeded cum quota for the month! Top up your balance to continue cumming https://www.paypal.com/paypalme/lucluccorp`).then(() => {
+          message.delete()
+        })
+      } else {
+        message.delete()
+      }
+    }
+  }
+
   if (enemies.has(message.author.id)) {
     greeting(
       message,
@@ -34,25 +53,5 @@ client.on('messageCreate', message => {
       require('./night-templates.js')
     );
   }
-});
 
-function greeting(message, hourSet, pattern, templates) {
-  if (message.author.bot) {
-    return;
-  }
-  let datetime = DateTime.now().setZone('America/Vancouver');
-  if (!hourSet.has(datetime.hour)) {
-    return;
-  }
-  if (!message.content.toLowerCase().match(pattern)) {
-    return;
-  }
-  let cachedDatetime = cache.get(message.author.id);
-  if (cachedDatetime && datetime.diff(cachedDatetime, 'seconds').toObject().seconds < cooldown) {
-    return;
-  }
-  cache.set(message.author.id, datetime);
-  let templateIndex = Math.floor(Math.random() * templates.length);
-  let replyContent = templates[templateIndex].replace('@', message.author);
-  message.reply(replyContent);
-}
+});

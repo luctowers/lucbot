@@ -17,7 +17,7 @@ client.on('messageCreate', message => {
       }
       cumTs[message.author.id] = now;
       if (reply) {
-        message.reply(`${message.author} you have your exceeded cum quota for the month! Top up your balance to continue cumming https://www.paypal.com/paypalme/lucluccorp`).then(() => {
+        message.reply(`${message.author} you have exceeded your cum quota for the month! Top up your balance to continue cumming https://www.paypal.com/paypalme/lucluccorp`).then(() => {
           message.delete()
         })
       } else {

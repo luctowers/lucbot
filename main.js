@@ -13,8 +13,7 @@ client.on('messageCreate', message => {
       let reply = true;
       let now = DateTime.now().setZone('America/Vancouver');
       if (cumTs[message.author.id]) {
-        return;
-        // reply = now.diff(cumTs[message.author.id], 'seconds').toObject().seconds > 30
+        reply = false;
       }
       cumTs[message.author.id] = now;
       if (reply) {

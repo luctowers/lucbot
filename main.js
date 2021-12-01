@@ -9,21 +9,21 @@ const cumTs = {};
 client.on('messageCreate', message => {
 
   // if (cumBan.has(message.author.id)) {
-    if (message.content.toLowerCase().match(/.*c+[^a-z]*u+[^a-z]*m+.*/i)) {
-      let reply = true;
-      let now = DateTime.now().setZone('America/Vancouver');
-      if (cumTs[message.author.id]) {
-        reply = false;
-      }
-      cumTs[message.author.id] = now;
-      if (reply) {
-        message.reply(`${message.author} has failed No Nut November`).then(() => {
-          message.delete()
-        })
-      } else {
-        message.delete()
-      }
-    }
+    // if (message.content.toLowerCase().match(/.*c+[^a-z]*u+[^a-z]*m+.*/i)) {
+    //   let reply = true;
+    //   let now = DateTime.now().setZone('America/Vancouver');
+    //   if (cumTs[message.author.id]) {
+    //     reply = false;
+    //   }
+    //   cumTs[message.author.id] = now;
+    //   if (reply) {
+    //     message.reply(`${message.author} has failed No Nut November`).then(() => {
+    //       message.delete()
+    //     })
+    //   } else {
+    //     message.delete()
+    //   }
+    // }
   // }
 
   if (enemies.has(message.author.id)) {
